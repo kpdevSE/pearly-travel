@@ -1,0 +1,60 @@
+import carImage from "../public/carone-removebg-preview.png";
+
+export const CarListData = [
+  {
+    id: 1,
+    name: "Uber X",
+    seat: 4,
+    desc: "Affordable, Every rides",
+    amount: 1.1,
+    image: carImage,
+  },
+  {
+    id: 2,
+    name: "Uber XL",
+    seat: 6,
+    desc: "Spacious, Ideal for groups",
+    amount: 1.5,
+    image: carImage,
+  },
+  {
+    id: 3,
+    name: "Uber Black",
+    seat: 4,
+    desc: "Premium rides with luxury",
+    amount: 2.2,
+    image: carImage,
+  },
+  {
+    id: 4,
+    name: "Uber Comfort",
+    seat: 4,
+    desc: "Enhanced comfort for long trips",
+    amount: 1.8,
+    image: carImage,
+  },
+  {
+    id: 5,
+    name: "Uber Pool",
+    seat: 4,
+    desc: "Affordable shared rides",
+    amount: 0.9,
+    image: carImage,
+  },
+  {
+    id: 6,
+    name: "Uber Lux",
+    seat: 4,
+    desc: "Luxury rides for special occasions",
+    amount: 3.0,
+    image: carImage,
+  },
+  {
+    id: 7,
+    name: "Uber Pet",
+    seat: 4,
+    desc: "Travel with your furry friends",
+    amount: 1.7,
+    image: carImage,
+  },
+];

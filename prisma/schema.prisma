@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Hotel {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  imageUrl       String
+  location       String
+  description    String
+  pricePerNight  Float
+  availableRooms Int
+  clerkUserId    String // ID of the Clerk user who added the hotel
+  clerkUserName  String // Name of the Clerk user
+  clerkUserEmail String // Email of the Clerk user
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Vehicle {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  type         String
+  brand        String
+  imageUrl     String
+  model        String
+  pricePerDay  Float
+  availability Boolean
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Train {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  route          String
+  imageUrl       String
+  departure      DateTime
+  arrival        DateTime
+  price          Float
+  availableSeats Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Events {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  name             String
+  imageUrl         String
+  location         String
+  date             DateTime
+  description      String
+  price            Float
+  availableTickets Int
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Rating {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  score     Int
+  comment   String?
+  createdAt DateTime @default(now())
+}
+
+model Booking {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  startDate DateTime?
+  endDate   DateTime?
+  quantity  Int
+  price     Float
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model CampaignItem {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  description    String
+  imageUrl       String
+  quantity       Int
+  price          Float
+  clerkUserId    String // ID of the Clerk user who added the hotel
+  clerkUserName  String // Name of the Clerk user
+  clerkUserEmail String // Email of the Clerk user
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
