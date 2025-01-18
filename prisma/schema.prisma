@@ -86,9 +86,9 @@ model CampaignItem {
   imageUrl       String
   quantity       Int
   price          Float
-  clerkUserId    String // ID of the Clerk user who added the hotel
-  clerkUserName  String // Name of the Clerk user
-  clerkUserEmail String // Email of the Clerk user
+  clerkUserId    String
+  clerkUserName  String
+  clerkUserEmail String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }

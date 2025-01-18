@@ -1,9 +1,13 @@
 "use client";
 import { useState } from "react";
 import { UploadDropzone } from "../../../utils/uploadthing";
-import { useUser } from "@clerk/nextjs"; // Import Clerk hook
+import { useUser } from "@clerk/nextjs";
+import NavigationBar from "../../components/NavigationBar";
+
+import { useRouter } from "next/navigation";
 
 const AddHotelForm = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     imageUrl: "",
@@ -59,6 +63,7 @@ const AddHotelForm = () => {
           pricePerNight: "",
           availableRooms: "",
         });
+        router.push("../../pages/GetAllHotels");
       } else {
         alert("Failed to add hotel. Please try again.");
       }
@@ -69,99 +74,110 @@ const AddHotelForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6"
-    >
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Add Hotel</h2>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-2"
-        />
+    <div>
+      <NavigationBar />
+      <div className="w-[90%] mx-auto">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full mx-auto bg-white shadow-md rounded-lg p-6"
+        >
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Add Hotel</h2>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg p-2"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Image
+            </label>
+            <UploadDropzone
+              endpoint="imageUploader"
+              onClientUploadComplete={(res) => {
+                console.log("Upload complete response:", res);
+                if (res && res.length > 0) {
+                  setImageUrl(res[0].url);
+                } else {
+                  console.error("Unexpected response format:", res);
+                }
+              }}
+              onUploadError={(error) => {
+                console.error("Error during upload:", error);
+                alert(`Error uploading image: ${error.message}`);
+              }}
+            />
+            {formData.imageUrl && (
+              <p className="text-green-600 mt-2">
+                Image uploaded successfully!
+              </p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Location
+            </label>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg p-2"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Description
+            </label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg p-2"
+            ></textarea>
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Price Per Night
+            </label>
+            <input
+              type="number"
+              name="pricePerNight"
+              value={formData.pricePerNight}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg p-2"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">
+              Available Rooms
+            </label>
+            <input
+              type="number"
+              name="availableRooms"
+              value={formData.availableRooms}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg p-2"
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Add Hotel
+          </button>
+        </form>
       </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Image</label>
-        <UploadDropzone
-          endpoint="imageUploader"
-          onClientUploadComplete={(res) => {
-            console.log("Upload complete response:", res);
-            if (res && res.length > 0) {
-              setImageUrl(res[0].url);
-            } else {
-              console.error("Unexpected response format:", res);
-            }
-          }}
-          onUploadError={(error) => {
-            console.error("Error during upload:", error);
-            alert(`Error uploading image: ${error.message}`);
-          }}
-        />
-        {formData.imageUrl && (
-          <p className="text-green-600 mt-2">Image uploaded successfully!</p>
-        )}
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Location</label>
-        <input
-          type="text"
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-2"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">
-          Description
-        </label>
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-2"
-        ></textarea>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">
-          Price Per Night
-        </label>
-        <input
-          type="number"
-          name="pricePerNight"
-          value={formData.pricePerNight}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-2"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">
-          Available Rooms
-        </label>
-        <input
-          type="number"
-          name="availableRooms"
-          value={formData.availableRooms}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-2"
-        />
-      </div>
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-      >
-        Add Hotel
-      </button>
-    </form>
+    </div>
   );
 };
 
