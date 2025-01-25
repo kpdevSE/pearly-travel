@@ -2,10 +2,27 @@
 
 import { useEffect, useState } from "react";
 import NavigationBar from "../../components/NavigationBar";
-import { UploadDropzone } from "../../../utils/uploadthing";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 export default function DashboardHome() {
   const [loading, setLoading] = useState(true);
+
+  const { user } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      if (user.publicMetadata?.role === "admin") {
+        // Redirect admin to Admin Dashboard if they are an admin
+        router.push("../../admin");
+      } else {
+        // Redirect non-admins to a different page or show access denied
+        router.push("/unauthorized");
+      }
+    }
+  }, [user, router]);
+
   useEffect(() => {
     setLoading(false);
   }, []);

@@ -24,7 +24,8 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "utils/uploadthing.js"
+    "utils/uploadthing.js",
+    "app/admin/SearchUser.jsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["utfs.io"],
+    domains: ["utfs.io", "img.clerk.com", "www.gravatar.com"],
   },
 };
 export default nextConfig;
