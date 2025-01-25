@@ -92,3 +92,10 @@ model CampaignItem {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
+
+model ChatMessage {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  senderId  String
+  createdAt DateTime @default(now())
+}

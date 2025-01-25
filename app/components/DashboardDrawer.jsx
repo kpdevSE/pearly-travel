@@ -87,7 +87,7 @@ export default function DashboardDrawer() {
                   <div className="relative mt-6 flex-1 px-1 sm:px-2">
                     <div className="flex items-start justify-start flex-col space-y-6 p-4 w-full">
                       {/* Links Section */}
-                      <div className="flex flex-col items-start space-y-4">
+                      <div className="flex flex-col items-start space-y-4 overflow-y-auto">
                         <Link
                           href="../pages/dashboardHome"
                           className="flex items-center gap-3 px-1 py-2 text-lg font-semibold text-gray-700 hover:bg-gray-100 "
@@ -305,6 +305,31 @@ export default function DashboardDrawer() {
                               <path d="m9 14 5 8" />
                             </svg>
                             <p>My Campaign Items</p>
+                          </div>
+                        </Link>
+                        <Link
+                          href="../pages/MyBookings"
+                          className="flex items-center gap-3 px-1 py-2 text-lg font-semibold text-gray-700 hover:bg-gray-100"
+                          role="menuitem"
+                        >
+                          <div className="flex items-start justify-start gap-3">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="34"
+                              height="34"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="lucide lucide-book-open-check text-black font-semibold"
+                            >
+                              <path d="M12 21V7" />
+                              <path d="m16 12 2 2 4-4" />
+                              <path d="M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3" />
+                            </svg>
+                            <p>My Bookings</p>
                           </div>
                         </Link>
                         <Link

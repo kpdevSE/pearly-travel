@@ -38,6 +38,36 @@ const ViewProfile = () => {
                 .map((email) => email.emailAddress)
                 .join(", ")}
             </p>
+            <p>
+              <strong>Phone:</strong>{" "}
+              {user.primaryPhoneNumber || "Not provided"}
+            </p>
+            <p>
+              <strong>Web3 Wallet:</strong>{" "}
+              {user.primaryWeb3Wallet || "Not connected"}
+            </p>
+            <p>
+              <strong>Account Created:</strong>{" "}
+              {new Date(user.createdAt).toLocaleDateString()}
+            </p>
+            <p>
+              <strong>Last Sign-In:</strong>{" "}
+              {user.lastSignInAt
+                ? new Date(user.lastSignInAt).toLocaleDateString()
+                : "Never"}
+            </p>
+            <p>
+              <strong>2FA Enabled:</strong>{" "}
+              {user.twoFactorEnabled ? "Yes" : "No"}
+            </p>
+            <p>
+              <strong>Email Verified:</strong>{" "}
+              {user.email_verified ? "Yes" : "No"}
+            </p>
+            <p>
+              <strong>Phone Verified:</strong>{" "}
+              {user.phone_number_verified ? "Yes" : "No"}
+            </p>
           </div>
         </div>
       </div>
