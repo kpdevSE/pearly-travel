@@ -10,8 +10,6 @@ import {
 } from "@headlessui/react";
 import { UserButton } from "@clerk/clerk-react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import Dropdown from "../components/Dropdown";
-import NextDropDown from "../components/NextDropDown";
 import Link from "next/link";
 import Image from "next/image";
 import logoImage from "../../public/logo.png";
@@ -320,10 +318,10 @@ export default function DashboardDrawer() {
                               viewBox="0 0 24 24"
                               fill="none"
                               stroke="currentColor"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              class="lucide lucide-book-open-check text-black font-semibold"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="lucide lucide-book-open-check text-black font-semibold"
                             >
                               <path d="M12 21V7" />
                               <path d="m16 12 2 2 4-4" />
